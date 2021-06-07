@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class TestReto1(unittest.TestCase):
     def setUp(self) -> None:
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
 

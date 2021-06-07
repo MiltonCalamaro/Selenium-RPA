@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 
 class TestRetoFinalCaso(unittest.TestCase):
     def setUp(self) -> None:
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
 
@@ -68,7 +68,10 @@ class TestRetoFinalCaso(unittest.TestCase):
         elements_menu = driver.find_element_by_xpath('//div[@class="header-text"]')
         elements_menu.click() 
         radiobutton_menu = driver.find_element_by_xpath("//span[contains(text(),'Radio Button')]")
-        radiobutton_menu.click()
+        try:
+            radiobutton_menu.click()
+        except:
+            driver.execute_script('arguments[0].click();', radiobutton_menu)
         yes_radiobutton = driver.find_element_by_xpath("//div[@class='custom-control custom-radio custom-control-inline']")
         yes_radiobutton.click()
         text_output = driver.find_element_by_xpath('//*[@class="mt-3"]/span')
